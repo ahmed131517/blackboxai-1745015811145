@@ -1,63 +1,98 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiz Creator App</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Creator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    </style>
 </head>
-<body class="bg-gray-50 font-sans text-gray-900 min-h-screen flex flex-col">
-  <header class="bg-blue-600 text-white p-4 shadow-md">
-    <h1 class="text-2xl font-semibold">Quiz Creator App</h1>
-  </header>
-  <main class="flex-grow container mx-auto p-4 max-w-5xl">
-    <section class="mb-6">
-      <h2 class="text-xl font-semibold mb-2">Create a New Question</h2>
-      <form id="question-form" class="bg-white p-4 rounded shadow-md space-y-4">
-        <div>
-          <label for="question-text" class="block font-medium mb-1">Question Text</label>
-          <input type="text" id="question-text" name="question-text" class="w-full border border-gray-300 rounded p-2" required />
+<body class="h-screen flex flex-col">
+    <!-- Ribbon Menu -->
+    <div class="ribbon bg-gray-50 border-b">
+        <div class="flex border-b">
+            <div class="ribbon-tab active">Home</div>
+            <div class="ribbon-tab">Insert</div>
+            <div class="ribbon-tab">Quiz Properties</div>
+            <div class="ribbon-tab">Preview</div>
+            <div class="ribbon-tab">Publish</div>
         </div>
-        <div>
-          <label class="block font-medium mb-1">Question Type</label>
-          <select id="question-type" name="question-type" class="w-full border border-gray-300 rounded p-2">
-            <option value="multiple-choice">Multiple Choice</option>
-          </select>
+        <div class="flex p-2 gap-2">
+            <button class="toolbar-btn"><i class="fas fa-file"></i> New</button>
+            <button class="toolbar-btn"><i class="fas fa-folder-open"></i> Open</button>
+            <button class="toolbar-btn"><i class="fas fa-save"></i> Save</button>
+            <div class="border-r mx-2"></div>
+            <button class="toolbar-btn"><i class="fas fa-undo"></i></button>
+            <button class="toolbar-btn"><i class="fas fa-redo"></i></button>
+            <div class="border-r mx-2"></div>
+            <button class="toolbar-btn"><i class="fas fa-spell-check"></i></button>
         </div>
-        <div id="choices-container" class="space-y-2">
-          <label class="block font-medium mb-1">Choices</label>
-          <div class="flex space-x-2">
-            <input type="text" class="choice-input flex-grow border border-gray-300 rounded p-2" placeholder="Choice 1" required />
-            <button type="button" id="add-choice" class="bg-green-500 text-white px-3 rounded hover:bg-green-600" title="Add Choice">
-              <i class="fas fa-plus"></i>
+    </div>
+
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        <div class="w-60 border-r bg-gray-50 flex flex-col">
+            <button class="m-4 p-2 bg-blue-500 text-white rounded">
+                Create New Quiz
             </button>
-          </div>
+            <div class="overflow-y-auto">
+                <div class="p-2 font-bold">Question Types</div>
+                <div class="sidebar-item"><i class="fas fa-check-circle"></i> Multiple Choice</div>
+                <div class="sidebar-item"><i class="fas fa-check-square"></i> Multiple Response</div>
+                <div class="sidebar-item"><i class="fas fa-keyboard"></i> Fill in the Blank</div>
+                <div class="sidebar-item"><i class="fas fa-arrows-alt-h"></i> Matching</div>
+                <div class="sidebar-item"><i class="fas fa-list"></i> Likert Scale</div>
+                <div class="sidebar-item"><i class="fas fa-pen"></i> Short Essay</div>
+                <div class="sidebar-item"><i class="fas fa-sort"></i> Sequence</div>
+                <div class="sidebar-item"><i class="fas fa-box"></i> Word Bank</div>
+                <div class="sidebar-item"><i class="fas fa-map-marker-alt"></i> Click Map</div>
+                <div class="sidebar-item"><i class="fas fa-toggle-on"></i> True/False</div>
+            </div>
         </div>
-        <div>
-          <label for="correct-choice" class="block font-medium mb-1">Correct Choice (number)</label>
-          <input type="number" id="correct-choice" name="correct-choice" min="1" class="w-full border border-gray-300 rounded p-2" required />
+
+        <!-- Main Editor -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <div class="border-b p-2 flex gap-2">
+                <button class="toolbar-btn"><i class="fas fa-bold"></i></button>
+                <button class="toolbar-btn"><i class="fas fa-italic"></i></button>
+                <button class="toolbar-btn"><i class="fas fa-underline"></i></button>
+                <div class="border-r mx-2"></div>
+                <button class="toolbar-btn"><i class="fas fa-image"></i></button>
+                <button class="toolbar-btn"><i class="fas fa-volume-up"></i></button>
+                <button class="toolbar-btn"><i class="fas fa-video"></i></button>
+                <button class="toolbar-btn"><i class="fas fa-link"></i></button>
+            </div>
+            
+            <div class="flex-1 p-4 overflow-y-auto">
+                <div class="mb-4">
+                    <div class="font-bold mb-2">Question Text</div>
+                    <textarea class="w-full p-2 border rounded" rows="4"></textarea>
+                </div>
+                
+                <div>
+                    <div class="font-bold mb-2">Answer Choices</div>
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2">
+                            <input type="radio" name="answer">
+                            <input type="text" class="flex-1 border rounded p-1" placeholder="Option 1">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input type="radio" name="answer">
+                            <input type="text" class="flex-1 border rounded p-1" placeholder="Option 2">
+                        </div>
+                        <button class="text-blue-500"><i class="fas fa-plus"></i> Add Option</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add Question</button>
-      </form>
-    </section>
-    <section class="mb-6">
-      <h2 class="text-xl font-semibold mb-2">Questions List</h2>
-      <ul id="questions-list" class="bg-white rounded shadow-md p-4 space-y-2 min-h-[100px]">
-        <!-- Questions will be listed here -->
-      </ul>
-    </section>
-    <section>
-      <h2 class="text-xl font-semibold mb-2">Quiz Preview</h2>
-      <div id="quiz-preview" class="bg-white rounded shadow-md p-4 min-h-[150px]">
-        <!-- Quiz preview will be shown here -->
-      </div>
-    </section>
-  </main>
-  <footer class="bg-gray-200 text-center p-4 text-sm text-gray-600">
-    &copy; 2024 Quiz Creator App
-  </footer>
+    </div>
+
+    <!-- Footer -->
+    <div class="border-t p-2 flex justify-between text-sm text-gray-600">
+        <div>Untitled Quiz</div>
+        <div>Question 1 of 1</div>
+    </div>
 </body>
 </html>
