@@ -1,0 +1,132 @@
+/* Base styles */
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Ribbon styles */
+.ribbon {
+    user-select: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.ribbon-tab {
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-right: 1px solid #e5e7eb;
+    font-size: 0.9rem;
+}
+
+.ribbon-tab:hover {
+    background-color: #f3f4f6;
+}
+
+.ribbon-tab.active {
+    background-color: #e3f2fd;
+    border-bottom: 2px solid #2196f3;
+}
+
+/* Toolbar styles */
+.toolbar-btn {
+    padding: 6px 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.toolbar-btn:hover {
+    background-color: #e5e7eb;
+}
+
+.toolbar-btn:active {
+    background-color: #d1d5db;
+}
+
+.toolbar-btn i {
+    font-size: 0.9rem;
+}
+
+/* Sidebar styles */
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    transition: all 0.2s;
+    border-radius: 4px;
+    margin: 2px 4px;
+}
+
+.sidebar-item:hover {
+    background-color: #f3f4f6;
+}
+
+.sidebar-item i {
+    width: 16px;
+    color: #4b5563;
+}
+
+/* Editor styles */
+textarea, input[type="text"] {
+    transition: border-color 0.2s;
+}
+
+textarea:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: #2196f3;
+    ring-color: #e3f2fd;
+    ring-width: 2px;
+}
+
+.answer-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.answer-option:hover {
+    background-color: #f3f4f6;
+}
+
+/* Custom radio button styling */
+input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #f9fafb;
+    border-top: 1px solid #e5e7eb;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #2196f3;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #1e88e5;
+}
+
+.btn-primary:active {
+    background-color: #1976d2;
+}
+
+/* Divider styles */
+.divider {
+    width: 1px;
+    height: 24px;
+    background-color: #e5e7eb;
+    margin: 0 8px;
+}
